@@ -1,11 +1,14 @@
+#necessary code to connect to database and collection
 from pymongo import MongoClient
 url= "mongodb+srv://admin:admin@cluster0.qvqxw.mongodb.net/pytech?retryWrites=true&w=majority";
 client=MongoClient(url)
 db = client.pytech
 students=db.students
 
+#updates the last name of 1007
 result=students.update_one({"student_id": "1007"}, {"$set": {"last_name": "Smith"}})
 
+#Displays information
 print("-- DISPLAYING STUDENTS DOCUMENTS FROM find() QUERY --")
 for key in students.find({},{"_id":0}):
     print("Student ID: ",key["student_id"], '\n'  "First Name: ",key["first_name"], '\n'  "Last Name: ",key["last_name"], '\n' )
