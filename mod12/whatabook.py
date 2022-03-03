@@ -19,7 +19,7 @@ config={
 #menu
 def show_menu():
     print("___Main Menu___\n")
-    print("1. View Books\n 2. View Store Locations\n 3. My Accounts\n 4. Exit")
+    print("1. View Books\n2. View Store Locations\n3. My Accounts\n4. Exit")
     try:
         choice= int(input('Enter the number of the category you want: '))
         return choice
@@ -33,7 +33,7 @@ def show_books(cursor):
     books=cursor.fetchall()
     print("\n __DISPLAYING BOOKS__\n")
     for book in books:
-        print("Book Name: {}\n Author: {} \n Details: {} \n".format(book[0], book[1], book[2]))
+        print("Book Name: {}\nAuthor: {} \nDetails: {} \n".format(book[0], book[1], book[2]))
 
 #location
 def show_locations(cursor):
@@ -59,7 +59,7 @@ def validate_user():
 def show_account_menu():
     try:
         print("\n __Account Menu__\n")
-        print("1. Wishlist\n 2. Add Book\n 3. Main Menu\n")
+        print("1. Wishlist\n2. Add Book\n3. Main Menu\n")
         account_choice=int(input("Enter the number for the category: "))
         return account_choice
     except:
@@ -78,7 +78,7 @@ def show_wishlist(cursor, user_id):
     print("\n __DISPLAYING WISHLIST__\n")
 
     for book in wishlist:
-        print("Book Name: {} \n Author: {}\n".format(book[4], book[5]))
+        print("Book Name: {} \nAuthor: {}\n".format(book[4], book[5]))
 
 #books add show
 def show_books_to_add(cursor, user_id):
@@ -90,7 +90,7 @@ def show_books_to_add(cursor, user_id):
     books_to_add =cursor.fetchall()
     print("\n __Displaying Books Available__\n")
     for book in books_to_add:
-        print("Book ID: {}\n Book Name:{}\n".format(book[0], book[1]))
+        print("Book ID: {}\nBook Name:{}\n".format(book[0], book[1]))
 
 #books add
 def add_book_to_wishlist(cursor, user_id, book_id):
@@ -123,13 +123,13 @@ try:
 
                 if account_choice==2:
                     show_books_to_add(cursor,my_id)
-                    book_id=int(input("\n Enter the book id that being added: "))
+                    book_id=int(input("\nEnter the book id that being added: "))
                     add_book_to_wishlist(cursor, my_id, book_id)
                     db.commit()
                     print("\n Book id: {} was added to your wishlist".format(book_id))
 
                 if account_choice< 0 or account_choice > 3:
-                    print("\n Invalid input, please try again...")
+                    print("\nInvalid input, please try again...")
                 account_choice=show_account_menu()
         
         if user_select< 0 or user_select > 4:
